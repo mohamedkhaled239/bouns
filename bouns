@@ -1,7 +1,8 @@
 #include <iostream>
+
 using namespace std;
 
-class kStacks
+class Stacks
 {
 	int *arr1;
 	int *arr2;
@@ -10,7 +11,7 @@ class kStacks
 	int n, k;
 	int free;
 public:
-	kStacks(int k, int n);
+	Stacks(int k, int n);
 
 	bool isFull() { return (free == -1); }
 
@@ -21,7 +22,7 @@ public:
 	bool isEmpty(int sn) { return (arr2[sn] == -1); }
 };
 
-kStacks::kStacks(int k1, int n1)
+Stacks::Stacks(int k1, int n1)
 {
 	k = k1, n = n1;
 	arr1 = new int[n];
@@ -31,14 +32,14 @@ kStacks::kStacks(int k1, int n1)
 	for (int i = 0; i < k; i++)
 		arr2[i] = -1;
 
-		
+
 	free = 0;
 	for (int i=0; i<n-1; i++)
 		arr3[i] = i+1;
 	arr3[n-1] = -1;
 }
 
-void kStacks::push(int item, int sn)
+void Stacks::push(int item, int sn)
 {
 	if (isFull())
 	{
@@ -56,7 +57,7 @@ void kStacks::push(int item, int sn)
 	arr1[i] = item;
 }
 
-int kStacks::pop(int sn)
+int Stacks::pop(int sn)
 {
 	if (isEmpty(sn))
 	{
@@ -76,20 +77,20 @@ int kStacks::pop(int sn)
 
 int main()
 {int k = 6, n = 6;
-	kStacks ks(k, n);
+	Stacks S(k, n);
 
-	ks.push(11, 2);
-	ks.push(22, 2);
+	S.push(11, 2);
+	S.push(22, 2);
 
-	ks.push(33, 1);
-	ks.push(44, 1);
+	S.push(33, 1);
+	S.push(44, 1);
 
-	ks.push(55, 0);
-	ks.push(66, 0);
+	S.push(55, 0);
+	S.push(66, 0);
 
-	cout << "Pop element from stack 2 is " << ks.pop(2) << endl;
-	cout << "Pop element from stack 1 is " << ks.pop(1) << endl;
-	cout << "Pop element from stack 0 is " << ks.pop(0) << endl;
+	cout << "Pop element from stack 2 is " << S.pop(2) << endl;
+	cout << "Pop element from stack 1 is " << S.pop(1) << endl;
+	cout << "Pop element from stack 0 is " << S.pop(0) << endl;
 
 	return 0;
 }
